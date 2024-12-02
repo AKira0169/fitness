@@ -45,25 +45,13 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
 ## Modules
 
 ```bash
 $ User Module: Manages user creation and authentication.
 $ Auth Module: Provides JWT-based authentication for protected routes.
 $ Fitness Class Module: Manages fitness class data (CRUD operations).
+$ Booking Module: Manages Booking fitness class  to users  (CRUD operations).
 ```
 
 ## API Endpoints
@@ -81,6 +69,14 @@ $ GET /fitness-class: Get all fitness classes.
 $ GET /fitness-class/:id: Get a fitness class by ID.
 $ PATCH /fitness-class/:id: Update a fitness class by ID.
 $ DELETE /fitness-class/:id: Delete a fitness class by ID.
+
+$ Booking (Authenticated Routes)
+
+$ POST /bookings: Create a booking.
+$ GET /bookings: Get all bookings.
+$ GET /bookings/:id: Get a booking by ID.
+$ PATCH /bookings/:id: Update a booking by ID.
+$ DELETE /bookings/:id: Delete a booking by ID.
 ```
 
 ## Support

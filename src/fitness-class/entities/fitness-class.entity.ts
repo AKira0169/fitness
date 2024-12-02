@@ -1,5 +1,5 @@
-// fitness-class.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Booking } from 'src/booking/entities/booking.entity';
 
 @Entity('fitness_classes')
 export class FitnessClass {
@@ -17,6 +17,10 @@ export class FitnessClass {
 
   @Column('time') // Use 'time' to store time in HH:mm format
   time: string;
+
   @Column('int')
   maxAttendees: number;
+
+  @OneToMany(() => Booking, (booking) => booking.fitnessClass)
+  bookings: Booking[];
 }

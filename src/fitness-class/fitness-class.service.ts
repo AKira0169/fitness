@@ -25,7 +25,9 @@ export class FitnessClassService {
 
   // Get all fitness classes
   async findAll(): Promise<FitnessClass[]> {
-    return await this.fitnessClassRepository.find(); // Find all records
+    return await this.fitnessClassRepository.find({
+      relations: ['bookings'], // Ensure that the bookings relation is loaded
+    });
   }
 
   // Get a single fitness class by ID
