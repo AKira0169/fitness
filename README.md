@@ -58,6 +58,31 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Modules
+
+```bash
+$ User Module: Manages user creation and authentication.
+$ Auth Module: Provides JWT-based authentication for protected routes.
+$ Fitness Class Module: Manages fitness class data (CRUD operations).
+```
+
+## API Endpoints
+
+```bash
+$ User
+
+$ POST /users: Register a new user.
+$ POST /auth/login: User login to receive a JWT token.
+
+$ Fitness Classes (Authenticated Routes)
+
+$ POST /fitness-class: Create a fitness class.
+$ GET /fitness-class: Get all fitness classes.
+$ GET /fitness-class/:id: Get a fitness class by ID.
+$ PATCH /fitness-class/:id: Update a fitness class by ID.
+$ DELETE /fitness-class/:id: Delete a fitness class by ID.
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
