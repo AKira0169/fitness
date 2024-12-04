@@ -61,8 +61,34 @@ export class BookingService {
     };
   }
 
-  async findAll() {
-    return await this.bookingRepository.find();
+  async findAll(id: number) {
+    const allBookings = await this.bookingRepository.find({
+      relations: ['user', 'fitnessClass'],
+    });
+
+    // Filter bookings by user id
+    const userBookings = allBookings.filter(
+      (booking) => booking.user.id === id,
+    );
+
+    // Calculate remaining spots for each fitness class
+    const classRemainingSpots = userBookings.map((booking) => {
+      const fitnessClass = booking.fitnessClass;
+      const classBookings = allBookings.filter(
+        (b) => b.fitnessClass.id === fitnessClass.id,
+      );
+      const remainingSpots = fitnessClass.maxAttendees - classBookings.length;
+
+      return {
+        ...booking,
+        fitnessClass: {
+          ...fitnessClass,
+          remainingSpots,
+        },
+      };
+    });
+
+    return classRemainingSpots;
   }
 
   async findOne(id: number) {

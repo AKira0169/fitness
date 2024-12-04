@@ -30,8 +30,8 @@ export class BookingController {
   }
 
   @Get()
-  async findAll() {
-    const result = await this.bookingService.findAll();
+  async findAll(@Request() req) {
+    const result = await this.bookingService.findAll(req.user.userId);
     return { status: 'success', data: result };
   }
 

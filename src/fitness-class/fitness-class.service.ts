@@ -32,7 +32,12 @@ export class FitnessClassService {
 
   // Get a single fitness class by ID
   async findOne(id: number): Promise<FitnessClass | undefined> {
-    return await this.fitnessClassRepository.findOneBy({ id }); // Find by ID
+    return await this.fitnessClassRepository.findOne({
+      where: {
+        id,
+      },
+      relations: ['bookings'], // Specify the related entities to load
+    });
   }
   async remove(id: number): Promise<void> {
     const entity = await this.fitnessClassRepository.findOne({ where: { id } }); // Pass an object with 'where' for the id

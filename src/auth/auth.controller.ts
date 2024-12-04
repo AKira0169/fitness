@@ -24,20 +24,21 @@ export class AuthController {
     @Body('password') password: string,
     @Res({ passthrough: true }) res: Response,
   ) {
+    console.log(email, password);
     const user = await this.userService.validateUser(email, password);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
     console.log(user);
     const { accessToken } = await this.authService.login(user);
-    console.log('accessToken', accessToken);
     res.cookie('jwt', accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       maxAge: 3600000, // 1 hour
+      sameSite: 'none',
     });
 
-    return { message: 'Login successful' };
+    return { message: 'Login successful', accessToken };
   }
 
   @Post('logout')
