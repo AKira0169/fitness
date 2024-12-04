@@ -78,6 +78,9 @@ $ GET /bookings/:id: Get a booking by ID.
 $ PATCH /bookings/:id: Update a booking by ID.
 $ DELETE /bookings/:id: Delete a booking by ID.
 ```
+## requirements
+PostgreSQL running on port 5432
+
 
 ## Support
 
