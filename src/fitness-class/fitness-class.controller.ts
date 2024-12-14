@@ -7,6 +7,8 @@ import {
   UseGuards,
   Delete,
   Patch,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { FitnessClassService } from './fitness-class.service';
 import { CreateFitnessClassDto } from './dto/create-fitness-class.dto';
@@ -14,6 +16,7 @@ import { UpdateFitnessClassDto } from './dto/update-fitness-class.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('fitness-class')
+@UseInterceptors(ClassSerializerInterceptor)
 export class FitnessClassController {
   constructor(private readonly fitnessClassService: FitnessClassService) {}
 

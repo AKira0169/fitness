@@ -8,6 +8,8 @@ import {
 import * as bcrypt from 'bcrypt';
 import { Booking } from 'src/booking/entities/booking.entity';
 
+import { Exclude } from 'class-transformer';
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -17,6 +19,7 @@ export class User {
   email: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @OneToMany(() => Booking, (booking) => booking.user)
